@@ -78,7 +78,8 @@ function update() {
 
 function placePipes() {
 
-    let randomPipeY = pipeY - pipeHeight/4; - Math.random()*(pipeHeight/2)  // Should change pipe height, come back here if issue with pipe height //
+    let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);  // Should change pipe height, come back here if issue with pipe height //
+    let space = board.height/4  // Space for bird to go through is 1/4th of board height, change if space is too big or too narrow
 
     let topPipe = {
         img : topPipeImg,
@@ -90,6 +91,16 @@ function placePipes() {
     }
 
 pipeArray.push(topPipe);
+
+let bottomPipe = {
+    img : bottomPipeImg,
+    x : pipeX,
+    y: randomPipeY + pipeHeight + space,
+    width : pipeWidth,
+    height : pipeHeight,
+    passed : false
+}
+pipeArray.push(bottomPipe);
 
 
 }

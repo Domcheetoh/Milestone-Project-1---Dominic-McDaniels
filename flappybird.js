@@ -20,7 +20,7 @@ let bird = {
 }
 
 // Pipes //
-letpipeArray = [];
+let pipeArray = [];
 let pipeWidth = 64;
 let pipeHeight = 512;
 let pipeX = boardWidth;
@@ -49,7 +49,6 @@ window.onload = function() {
     birdImg.src = "./flappybird.png";
     birdImg.onload = function () {
         context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
-
     }
 
     topPipeImg = new Image();
@@ -59,7 +58,7 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500)
+    setInterval(placePipes, 1500);
 
 }
 
@@ -78,11 +77,15 @@ function update() {
 }
 
 function placePipes() {
+
+    let randomPipeY = pipeY - pipeHeight/4; - Math.random()*(pipeHeight/2)  // Should change pipe height, come back here if issue with pipe height //
+
     let topPipe = {
         img : topPipeImg,
         x : pipeX,
-        y : pipeY,
+        y : randomPipeY,
         width : pipeWidth, 
+        height : pipeHeight,
         passed : false
     }
 

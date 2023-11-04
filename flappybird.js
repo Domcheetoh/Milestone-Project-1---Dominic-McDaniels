@@ -68,7 +68,7 @@ function update() {
     context.clearRect(0, 0, board.width, board.height)
 // Bird Details
     velocityY += gravity;
-    bird.y += Math.max(bird.y + velocityY, 0); // Will make sure bird can't fly over screen //
+    bird.y = Math.max(bird.y + velocityY, 0); // Will make sure bird  can't fly over screen //
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
     // For Pipes //

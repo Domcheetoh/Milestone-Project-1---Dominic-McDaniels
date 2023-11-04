@@ -31,7 +31,8 @@ let bottomPipeImg;
 
 // Physics //
 let velocityX = -2; // Remember do negative to make pipes go left //
-
+let velocityY = 0; // Bird jump speed, on 0 bird is not jumping. Negative means bird goes up, positive means bird goes down i think??
+let gravity = 0.4; 
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -59,13 +60,15 @@ window.onload = function() {
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500);
-
-}
+    document.addEventListener("keydown", birdJump);
+} 
 
 function update() {
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height)
-
+// Bird Details
+    velocityY += gravity;
+    bird.y += Math.max(bird.y + velocityY, 0); // Will make sure bird can't fly over screen //
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
     // For Pipes //
@@ -101,6 +104,11 @@ let bottomPipe = {
     passed : false
 }
 pipeArray.push(bottomPipe);
-
-
 }
+
+function birdJump(e) {
+    if (e.code == "Space") {
+        velocityY = -6; 
+    }
+}
+ 

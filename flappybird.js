@@ -101,6 +101,11 @@ function update() {
     context.fillStyle = "white";
     context.font="45px sans-serif";
     context.fillText(score, 5, 45);
+
+    if (gameOver) {
+        context.fillText("Game Over", 70, 320);
+    }
+
 }
 
 function placePipes() {
@@ -136,6 +141,15 @@ pipeArray.push(bottomPipe);
 function birdJump(e) {
     if (e.code == "Space") {
         velocityY = -6; 
+
+    // Reset game //
+        if (gameOver) {
+            bird.y = birdY; // Only do bird Y because only birdY position changes //
+            pipeArray = [];
+            score = 0;
+            gameOver = false;
+    // Essentially just setting game back to starting state //
+        }
     }
 }
  

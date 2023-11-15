@@ -30,9 +30,9 @@ let topPipeImg;
 let bottomPipeImg;
 
 // Physics //
-let velocityX = -2; // Remember do negative to make pipes go left //
+let velocityX = -1.75; // Remember do negative to make pipes go left //
 let velocityY = 0; // Bird jump speed, on 0 bird is not jumping. Negative means bird goes up, positive means bird goes down i think??
-let gravity = 0.25; 
+let gravity = 0.225; 
 
 let gameOver = false;
 let score = 0;
